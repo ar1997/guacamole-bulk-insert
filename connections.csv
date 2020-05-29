@@ -1,0 +1,12 @@
+ssh,ssh should be in default,localhost,ar,port,password,default
+ssh,ssh should be in root,localhost,ar,port,password
+ssh,ssh should fail cuz less,localhost,ar,port
+ssh,ssh should fail cuz more,localhost,ar,port,password,default,xyz
+vnc,vnc should be in default,localhost,port,password,default
+vnc,vnc should be in root,localhost,port,password
+vnc,vnc should fail cuz less,port
+vnc,vnc should fail cuz more,localhost,ar,port,password,default,xyz
+rdp,rdp should be in not_so_default,localhost,ar,port,password,not_so_default
+rdp,rdp should be in root,localhost,ar,port,password
+rdp,rdp should fail cuz less,localhost,ar,port
+rdp,rdp should fail cuz more,localhost,ar,port,password,default,xyz

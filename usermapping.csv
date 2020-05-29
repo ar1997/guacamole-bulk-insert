@@ -1,0 +1,4 @@
+anna,user,rasool,connection
+ar,user,default,connectiongroup
+one,usergroup,inside default,connectiongroup
+two,usergroup,rasool,connection
