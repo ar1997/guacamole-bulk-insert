@@ -5,7 +5,7 @@ A go program that can insert data into the Guacamole database.
 - It supports adding Connections, Users(Read only), Connection Groups, User Groups(Read only). *(Read only means, not administrators) 
 - It can add connection groups, user groups
 - It can map users/user groups with connections/connection groups. All using CSV.
-- It needs a secondary authentication mechanism. Simply creates empty users, whose names can be same as the credentials required for SSO/LDAP etc.
+- It needs a secondary authentication mechanism. Simply creates empty users, whose names can be same as the credentials required for user-mapping.xml / SSO / LDAP etc.
 
 
 # Bulk insert data into Postgres - Guacamole
@@ -16,7 +16,7 @@ A go program that can insert data into the Guacamole database.
 
 - users.csv
 
-To insert a user, it expects : name of user,group(s) which they belong to, all comma seperated. Currently limiting the number of groups a user can belong to to 20. ( you can change it if you want to)
+To insert a user, it expects : name of user,group(s) which they belong to, all comma seperated. Currently limiting the number of groups a user can belong to to 20. (you can change it if you want to)
 
 - connections.csv
 
