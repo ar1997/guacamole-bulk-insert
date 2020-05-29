@@ -16,7 +16,7 @@ A go program that can insert data into the Guacamole database.
 
 - users.csv
 
-To insert a user, it expects : name of user,group(s) which they belong to, all comma seperated. Currently limiting the number of groups a user can belong to to 20.
+To insert a user, it expects : name of user,group(s) which they belong to, all comma seperated. Currently limiting the number of groups a user can belong to to 20. ( you can change it if you want to)
 
 - connections.csv
 
