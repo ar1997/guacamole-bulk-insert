@@ -1,29 +1,80 @@
 # guacamole-bulk-insert
-A go program that can insert data into the Guacamole database.
+A go program that can insert data into the Guacamole database. (Postgres in this case)
 
-- This program takes data in the form of csv
-- It supports adding Connections, Users(Read only), Connection Groups, User Groups(Read only). *(Read only means, not administrators) 
-- It can add connection groups, user groups
-- It can map users/user groups with connections/connection groups. All using CSV.
-- It needs a secondary authentication mechanism. Simply creates empty users, whose names can be same as the credentials required for user-mapping.xml / SSO / LDAP etc.
+NOTE :
+- This program takes data as csv
+- It supports adding Connections, Users, Connection Groups, User Groups.
+- It can map users/user groups with connections/connection groups. All using the CSV.
+- It needs a secondary authentication mechanism.
+
+`Simply creates empty users, whose names can be same as the credentials required for user-mapping.xml / SSO / LDAP etc.`
 
 
 # Bulk insert data into Postgres - Guacamole
 
 「Guacamole」データベースへのデータの一括挿入
 
-## Files and format
+## users.csv
+### Adding a user
 
-- users.csv
+1. User entry expects (This does not assign the user any parent group.)
+```
+user,<name of the user>
+```
+2. User entry with one more parent user group (The user can have as many parent user groups as desired)
+```
+user,<name of the user>,<parent user group #1>,<parent user group #2>
+```
+## Adding a user group
 
-To insert a user, it expects : name of user,group(s) which they belong to, all comma seperated. Currently limiting the number of groups a user can belong to to 20. (you can change it if you want to)
+1. User group entry expects (This does not assign this group any parent group.)
 
-- connections.csv
+```
+usergroup,<name of the user group>
+```
 
-1. SSH expects : protocol,name,hostname,username,port,password,connectionGroupName
-2. VNC expects: protocol,name,hostname,port,password,connectionGroupName
-3. RDP expects : protocol,name,hostname,port,username,password,connectionGroupName
+2. User group entry with one more parent user group (The user group can have as many parent user groups as desired)
 
+```
+usergroup,<name of the user group>,<parent user group #1>,<parent user group #2>
+```
+
+## connections.csv
+
+
+### Adding connections
+
+- It is okay to not specify the <ConnectionGroupName> at the end of the recod. The connection will then reside at the root, just like everything else.
+
+1. SSH expects : 
+```
+connection,ssh,<connection name>,<hostname>,<user>,<port>,<password>,<connectionGroupName>
+```
+2. VNC expects: 
+```
+connection,vnc,<connection name>,<hostname>,<port>,<password>,<connectionGroupName>
+```
+3. RDP expects : 
+```
+connection,rdp,<connection name>,<hostname>,<user>,<port>,<password>,<connectionGroupName>
+```
+### Adding connection groups
+
+- When specifying connection groups, do not worry about the order in which you're specifying them, the program first looks for all connection groups and adds all connection groups first. If it cannot find parent group of a connection/connection group, it will recursively check if that immediate parent group is supposed to be created from the same csv (looks for existsance as a child in teh same file) and creates them, if it does not exist at all, it is added to the root. Look at handleParentGroup() function for a better understanding.
+
+- A connection group can only have one parent. It is okay to not specify the parent connection group, it will just get added to the root.
+
+```
+usergroup,<name of user group>
+```
+```
+usergroup,<name of user group>,<name of parent group>
+```
+
+## usermapping.csv
+
+```
+```
 - Adding user groups and connection groups for now is limited to command line. Will be reay in a day
 
 - usermapping.csv
