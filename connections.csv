@@ -1,12 +1,13 @@
-ssh,ssh should be in default,localhost,ar,port,password,default
-ssh,ssh should be in root,localhost,ar,port,password
-ssh,ssh should fail cuz less,localhost,ar,port
-ssh,ssh should fail cuz more,localhost,ar,port,password,default,xyz
-vnc,vnc should be in default,localhost,port,password,default
-vnc,vnc should be in root,localhost,port,password
-vnc,vnc should fail cuz less,port
-vnc,vnc should fail cuz more,localhost,ar,port,password,default,xyz
-rdp,rdp should be in not_so_default,localhost,ar,port,password,not_so_default
-rdp,rdp should be in root,localhost,ar,port,password
-rdp,rdp should fail cuz less,localhost,ar,port
-rdp,rdp should fail cuz more,localhost,ar,port,password,default,xyz
+connectiongroup,all
+connectiongroup,admin
+connectiongroup,admin,all
+connectiongroup,dev,all
+connectiongroup,manage,all
+connectiongroup,milky_way
+connectiongroup,solar_system,milky_way
+connectiongroup,sun,solar_system
+connection,ssh,ssh should be in sun,localhost,tyler,port,password,sun
+connection,ssh,ssh should be in root,localhost,tyler,port,password
+connection,vnc,vnc should be in dev,localhost,port,password,dev
+connection,vnc,vnc should be in manage,localhost,port,password,manage
+connection,rdp,rdp should be in solar_system,localhost,tyler,port,password,solar_system
