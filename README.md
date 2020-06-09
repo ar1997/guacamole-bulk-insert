@@ -75,7 +75,7 @@ connectiongroup,<name of connection group>,<name of parent connection group>
 ## usermapping.csv
 
 ```
-UserEntityName,UserEntityType,ConnectionEntityName,ConnectionEntityType
+<UserEntityName>,<UserEntityType>,<ConnectionEntityName>,<ConnectionEntityType>
 ```
 
 1. UserEntityName can be the name of a user/user group
