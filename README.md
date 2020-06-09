@@ -1,5 +1,6 @@
 # guacamole-bulk-insert
-A go program that can insert data into the Guacamole database. (Postgres in this case)
+
+This is a program written in GO that inserts data into the Guacamole database in large numbers. (Postgres in this case). If you dont have a mechanism to insert connection and user data 
 
 NOTE :
 - This program takes data as csv
@@ -7,7 +8,7 @@ NOTE :
 - It can map users/user groups with connections/connection groups. All using the CSV.
 - It needs a secondary authentication mechanism.
 
-`Simply creates empty users, whose names can be same as the credentials required for user-mapping.xml / SSO / LDAP etc.`
+`This creates EMPTY users, whose names should be same as defined in user-mapping.xml / SSO / LDAP etc.`
 
 
 # Bulk insert data into Postgres - Guacamole
@@ -65,29 +66,22 @@ connection,rdp,<connection name>,<hostname>,<user>,<port>,<password>,<connection
 - A connection group can only have one parent. It is okay to not specify the parent connection group, it will just get added to the root.
 
 ```
-usergroup,<name of user group>
+connectiongroup,<name of connection group>
 ```
 ```
-usergroup,<name of user group>,<name of parent group>
+connectiongroup,<name of connection group>,<name of parent connection group>
 ```
 
 ## usermapping.csv
 
 ```
-```
-- Adding user groups and connection groups for now is limited to command line. Will be reay in a day
-
-- usermapping.csv
-
 UserEntityName,UserEntityType,ConnectionEntityName,ConnectionEntityType
+```
 
-UserEntityName can be the name of a user/user group
-UserEntityType can be either user / usergroup
-ConnectionEntityName can be either a connection/connection group
-ConnectionEntityType can be either connection / connectiongroup
-
-
-
+1. UserEntityName can be the name of a user/user group
+2. UserEntityType can be either user / usergroup
+3. ConnectionEntityName can be either a connection/connection group
+4. ConnectionEntityType can be either connection / connectiongroup
 
 ## To clean up and reinitialize the database and to see which tables are being updated :
 
