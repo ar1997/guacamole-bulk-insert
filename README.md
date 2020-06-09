@@ -83,6 +83,20 @@ connectiongroup,<name of connection group>,<name of parent connection group>
 3. ConnectionEntityName can be either a connection/connection group
 4. ConnectionEntityType can be either connection / connectiongroup
 
+There are four possibilities -
+
+Please note that if the connection is a part of a connection group, the user must be given access to the parent group of a connection and if that connection has a parent to that group also, the program does this recursively till it reaches the root.
+The same goes for a connection group. And since a user group is treated the same, it goes for that too.
+
+1. A user is given access to(being mapped to) a connection
+2. A user group is given access to a connection
+
+When a user / user group is given access to a connection group, it should have access to its child connections, child groups and children on child groups and so on. This is also taken care of.
+
+3. A user is given access to a connection group
+4. A user group is given access to a connection group
+
+
 ## To clean up and reinitialize the database and to see which tables are being updated :
 
 1. copy "stage-db" to /var/lib/postgresql
