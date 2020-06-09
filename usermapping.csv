@@ -1,4 +1,4 @@
-anna,user,rasool,connection
-ar,user,default,connectiongroup
-one,usergroup,inside default,connectiongroup
-two,usergroup,rasool,connection
+admin,usergroup,admin,connectiongroup
+pepe,user,dev,connectiongroup
+manage,usergroup,vnc should be in manage,connection
+rasool,user,rdp should be in solar_system,connection
